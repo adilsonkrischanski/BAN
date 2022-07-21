@@ -1,3 +1,13 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package com.mycompany.finalban;
+
+/**
+ *
+ * @author krischanski
+ */
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,6 +20,9 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.sql.SQLException;
+
+
 
 
 public class PacienteController {
@@ -19,6 +32,12 @@ public class PacienteController {
         System.out.println("Insira os seguintes dados para a cadastrar um novo paciente: ");
         System.out.print("Nome: ");
         String nome = input.nextLine();
+        
+        System.out.println("CPF: ");
+        long cpf = input.nextLong();
+        input.nextLine();
+        
+        int codp = (int)cpf / 3;
         
         System.out.println("Data de Nascimento DD-MM-AAAA"); 
         String dataNascimento = input.nextLine();
@@ -41,27 +60,35 @@ public class PacienteController {
             telefone2 = input.nextLine();
         }
         
-        System.out.println("Deseja Informar um Email");
+        System.out.println("Deseja Cadastrar um Email");
+        char checkemail = input.nextLine().toUpperCase().charAt(0);
         
-        
-        
-        System.out.println("CPF: ");
-        long cpf = input.nextLong();
-        
-        
-        
-     
-                
-        AmbulatoriosBean ab = new AmbulatoriosBean(nroa, capacidade, andar);
-        AmbulatoriosModel.create(ab, con);
-        System.out.println("Ambulatório criado com sucesso!!");
-    }
-
-    void listarAmbulatorio(Connection con) throws SQLException {
-        HashSet all = AmbulatoriosModel.listAll(con);
-        Iterator<AmbulatoriosBean> it = all.iterator();
-        while(it.hasNext()) {
-            System.out.println(it.next().toString());
+        String email  = new String();       
+        if(checkemail =='S'){
+           System.out.println("Informe o email ");
+           email = input.nextLine();
+           Email e = new Email(email,codp );
         }
+       
+       
+        
+        
+        
+        Paciente pc = new Paciente(codp, cpf, nome, dataNascimento,endereco,tipoSanguineo);
+        
+       
     }
+                
+//        AmbulatoriosBean ab = new AmbulatoriosBean(nroa, capacidade, andar);
+//        AmbulatoriosModel.create(ab, con);
+//        System.out.println("Ambulatório criado com sucesso!!");
+//    }
+//
+//    void listarAmbulatorio(Connection con) throws SQLException {
+//        HashSet all = AmbulatoriosModel.listAll(con);
+//        Iterator<AmbulatoriosBean> it = all.iterator();
+//        while(it.hasNext()) {
+//            System.out.println(it.next().toString());
+//        }
+//    }
 }

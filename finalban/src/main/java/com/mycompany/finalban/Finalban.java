@@ -1,17 +1,57 @@
+package com.mycompany.finalban;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Project/Maven2/JavaApp/src/main/java/${packagePath}/${mainClassName}.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-package com.mycompany.finalban;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Scanner;
+import java.sql.SQLException;
+
 
 /**
  *
- * @author adilson
+ * @author krischanski
  */
 public class Finalban {
-
-    public static void main(String[] args) {
-        System.out.println("Hello World!");
+    
+     public static void main(String[] args) throws SQLException {
+        Conexao c = new Conexao();
+        Connection con = c.getConnection();
+        int op = 0;
+        do{
+            op = menu();
+            try {
+                switch (op) {
+                    case 1: new MedicamentoController().create(con);
+                           
+                }
+            }catch(SQLException ex) {
+                //ex.printStackTrace();
+                System.out.println(ex.getMessage());
+                continue;
+            }
+        } while(op>0 && op<6);  
+        con.close();
+    }    
+    
+    public static int menu(){
+        System.out.println("1 - Cadastrar Profissional");
+        System.out.println("2 - Cadastrar Paciente");
+        System.out.println("3 - Cadastrar Medicamento");
+        System.out.println("4 - Cadastrar Email");
+        System.out.println("5 - Cadastrar Telefone");
+        System.out.println("6 - Listar Proficionais");
+        System.out.println("7 - Listar Pacientes");
+        Scanner input = new Scanner(System.in);
+        return input.nextInt();
+        
     }
+    
 }

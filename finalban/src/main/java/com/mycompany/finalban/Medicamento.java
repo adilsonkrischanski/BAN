@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.finalban.dados;
+package com.mycompany.finalban;
 
 /**
  *
@@ -14,8 +14,13 @@ public class Medicamento {
     private String nomeMedicamento = new String();
     private double dosagem  = 0.0;
 
-    public Medicamento() {
+    public Medicamento(int idmedicamento,String fornecedor,String nomeMedicamento,double dosagem) {
+        this.idmedicamento = idmedicamento;
+        this.fornecedor = fornecedor;
+        this.nomeMedicamento = nomeMedicamento;
+        this.dosagem = dosagem;
     }
+
 
     public int getIdmedicamento() {
         return idmedicamento;
@@ -48,6 +53,11 @@ public class Medicamento {
     public void setDosagem(double dosagem) {
         this.dosagem = dosagem;
     }    
+
+    @Override
+    public String toString() {
+        return "Medicamento{" + "idmedicamento=" + idmedicamento + ", fornecedor=" + fornecedor + ", nomeMedicamento=" + nomeMedicamento + ", dosagem=" + dosagem + '}';
+    }
     
     
 }
