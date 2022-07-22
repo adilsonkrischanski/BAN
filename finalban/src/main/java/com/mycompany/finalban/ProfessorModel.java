@@ -26,16 +26,15 @@ public class ProfessorModel {
             st.close();  
     }
     
-    static HashSet listAll(Connection con) throws SQLException {
+    static void listAll(Connection con) throws SQLException {
         Statement st;
         HashSet list = new HashSet();
             st = con.createStatement();
-            String sql = "SELECT cpf,crm FROM professores";
+            String sql = "SELECT nome,cpf,crm FROM professores pf JOIN profissionais p ON p.cpf = pf.cpf";
             ResultSet result = st.executeQuery(sql);
             while(result.next()) {
-                list.add(new Professor(result.getString(2), result.getLong(1)));
+                System.out.println("nome: "+result.getString(1)+"\tcpf: "+ Long.toString(result.getLong(2))+""+result.getString(3));
             }
-        return list;
     }
     
 }

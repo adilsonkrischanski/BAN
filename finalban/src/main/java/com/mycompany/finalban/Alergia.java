@@ -36,7 +36,7 @@ public class Alergia {
 
     @Override
     public String toString() {
-        return "Alergia{" + "codp=" + codp + ", idmedicamento=" + idmedicamento + '}';
+        return "Alergia ao medicamento ID: " + idmedicamento + "\tCodigo do Paciente: " + codp;
     }
     
     

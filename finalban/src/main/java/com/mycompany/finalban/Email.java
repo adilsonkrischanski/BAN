@@ -11,8 +11,8 @@ package com.mycompany.finalban;
  */
 public class Email {
     private String email = new String();
-    int codp;
-    long cpf;
+    int codp = -1;
+    long cpf = -1;
 
     public String getEmail() {
         return email;
@@ -42,7 +42,11 @@ public class Email {
 
     @Override
     public String toString() {
-        return "Email{" + "email=" + email + ", codp=" + codp + ", cpf=" + cpf + '}';
+        if(codp == -1){
+            return "Email: " + email + "\tCPF: " + cpf;
+        }else{
+            return "Email: " + email + "\tCodigo do Paciente: " + codp;
+        } 
     }
 
 

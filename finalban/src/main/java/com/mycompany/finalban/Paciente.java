@@ -78,7 +78,7 @@ public class Paciente {
 
     @Override
     public String toString() {
-        return "Paciente{" + "codp=" + codp + ", nome=" + nome + ", cpf=" + cpf + ", dtnascimento=" + dtnascimento + ", endereco=" + endereco + ", tipoSanguineo=" + tipoSanguineo + '}';
+        return "Paciente: "+ nome + "\tCodigo: " + codp + "\tCPF: " + cpf + "\tData de nascimento: " + dtnascimento + "\tEndereco: " + endereco + "\tTipo Sanguineo: " + tipoSanguineo;
     }
     
     

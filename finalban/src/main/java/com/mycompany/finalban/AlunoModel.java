@@ -32,10 +32,10 @@ public class AlunoModel {
         Statement st;
         HashSet list = new HashSet();
             st = con.createStatement();
-            String sql = "SELECT cpf, matricula, datainicio, crmorientador FROM alunos";
+            String sql = "SELECT cpf, matricula, datainicio, crmorientador, nome FROM alunos NATURAL JOIN profissionais order by nome";
             ResultSet result = st.executeQuery(sql);
             while(result.next()) {
-                list.add(new Aluno(result.getLong(1), result.getLong(2), result.getString(3), result.getString(4)));
+                list.add(new Aluno(result.getLong(1), result.getLong(2), result.getString(3), result.getString(4), result.getString(5)));
             }
         return list;
     }

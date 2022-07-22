@@ -34,7 +34,7 @@ public class PacienteModel {
         Statement st;
         HashSet list = new HashSet();
             st = con.createStatement();
-            String sql = "SELECT cpf,codp, tiposanguineo, nome, dtnascimento,endereco FROM pacientes";
+            String sql = "SELECT cpf,codp, tiposanguineo, nome, dtnascimento,endereco FROM paciente";
             ResultSet result = st.executeQuery(sql);
             while(result.next()) {
                 list.add(new Paciente(result.getInt(1), result.getInt(2), result.getString(3),result.getString(4),result.getString(5),result.getString(6)));

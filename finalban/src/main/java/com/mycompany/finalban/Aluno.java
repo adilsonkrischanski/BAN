@@ -20,6 +20,14 @@ public class Aluno extends Profissional{
         this.crmOrientador = crmOrientador;
         this.dataInicio = dataInicio;
     }
+    public Aluno(Long cpf, Long matricula, String dataInicio, String crmOrientador, String nome) {
+        super();
+        this.cpf = cpf;
+        this.matricula = matricula;
+        this.crmOrientador = crmOrientador;
+        this.dataInicio = dataInicio;
+        this.nome = nome;
+    }
     
 
     public Long getCpf() {
@@ -56,7 +64,7 @@ public class Aluno extends Profissional{
 
     @Override
     public String toString() {
-        return "Aluno{" + "cpf=" + cpf + ", matricula=" + matricula + ", dataInicio=" + dataInicio + ", crmOrientador=" + crmOrientador + '}';
+        return "Aluno: "+ nome+"\tCPF: " + cpf + "\tMatricula: " + matricula + "\tInicio do Internato: " + dataInicio + "\tCRM Orientador: " + crmOrientador;
     }
     
     

@@ -17,19 +17,13 @@ import java.util.Scanner;
 public class ProfessorController {
     public void create(Connection con) throws SQLException {
         Scanner input = new Scanner(System.in);
-        System.out.println("Insira os seguintes dados para a cadastrar um novo Aluno: ");
+        System.out.println("Insira os seguintes dados para a cadastrar um novo Professor: ");
         System.out.print("Nome: ");
-        String nome = input.nextLine();
+        String nome = input.nextLine().toUpperCase();
         
         System.out.print("CPF: ");
         long cpf = input.nextLong();
         input.nextLine();
-        
-        
-        
-        
-        
-        
         
         System.out.print("Data de Nascimento (DD/MM/AAAA): "); 
         String dataNascimento = input.nextLine();
@@ -75,19 +69,7 @@ public class ProfessorController {
            Email e = new Email(email,cpf );
            EmailModel.createProfissionais(e, con);
         }
-        
-         
-        
+   
         System.out.println("Professor cadastrado com sucesso!!");
-    }
-
-    void listarAlunos(Connection con) throws SQLException {
-        HashSet all = ProfessorModel.listAll(con);
-        Iterator<Professor> it = all.iterator();
-        while(it.hasNext()) {
-            System.out.println(it.next().toString());
-        }
-    }
-    
-    
+    }    
 }

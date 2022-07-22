@@ -10,8 +10,8 @@ package com.mycompany.finalban;
  */
 public class Telefone {
     private String telefone = new String();
-    int codp;
-    long cpf;
+    int codp = -1;
+    long cpf = -1;
     
     
     public Telefone(String telefone,int codp) {
@@ -50,7 +50,11 @@ public class Telefone {
 
     @Override
     public String toString() {
-        return "Telefone{" + "telefone=" + telefone + ", codp=" + codp + ", cpf=" + cpf + '}';
+        if (codp == -1){
+            return "Telefone: "+ telefone +"\tCPF: " + cpf;    
+        }else{
+            return "Telefone: "+ telefone + "\tCodigo do Paciente: " + codp;
+        }
     }
     
     

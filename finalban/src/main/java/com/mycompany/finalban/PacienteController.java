@@ -31,7 +31,7 @@ public class PacienteController {
         Scanner input = new Scanner(System.in);
         System.out.println("Insira os seguintes dados para a cadastrar um novo paciente: ");
         System.out.print("Nome: ");
-        String nome = input.nextLine();
+        String nome = input.nextLine().toUpperCase();
         
         System.out.print("CPF: ");
         long cpf = input.nextLong();

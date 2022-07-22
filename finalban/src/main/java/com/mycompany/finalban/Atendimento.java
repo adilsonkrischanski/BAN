@@ -26,7 +26,7 @@ public class Atendimento {
     
     @Override
     public String toString() {
-        return "Atendimento{" + "codp=" + codp + ", cpfProfissional=" + cpfProfissional + ", dtentrada=" + dtentrada + ", tipo=" + tipo + ", idDiagnostico=" + idDiagnostico + '}';
+        return "Atendimento Tipo " + tipo + "\nCodigo do Paciente: " + codp + "\tCPF do Profissional: " + cpfProfissional + "\tData de entrada: " + dtentrada + "\tDiagnostico ID: " + idDiagnostico;
     }
    
 
