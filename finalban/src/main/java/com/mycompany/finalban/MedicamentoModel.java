@@ -41,6 +41,15 @@ public class MedicamentoModel {
     }
     
     
+     static int maxCodp(Connection con) throws SQLException {
+        Statement st;
+        HashSet list = new HashSet();
+            st = con.createStatement();
+            String sql = "SELECT max(codp) FROM medicamentos";
+            ResultSet result = st.executeQuery(sql);
+            
+            return result.getInt(1);
     
+    }
     
 }

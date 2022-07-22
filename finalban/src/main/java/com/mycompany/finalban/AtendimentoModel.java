@@ -10,19 +10,22 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Scanner;
 
 /**
  *
- * @author adilson
+ * @author krischanski
  */
-public class ProfissionalModel {
-    public static void create(Profissional p, Connection con) throws SQLException {
+public class AtendimentoModel {
+    public static void create(Atendimento at, Connection con) throws SQLException {
         PreparedStatement st;
-            st = con.prepareStatement("INSERT INTO profissionais (cpf, nome, dtnascimento, endereco) VALUES (?,?,?,?)");
-            st.setLong(1,p.getCpf());
-            st.setString(2,p.getNome());
-            st.setString(3,p.getDtnascimento());
-            st.setString(4,p.getEndereco());
+            st = con.prepareStatement("INSERT INTO atendimento (codp, cpfprofissional,dtentrada,idddiagnostico,tipo) VALUES (?,?,?,?,?)");
+            st.setInt(1,at.getCodp());
+            st.setLong(2,at.getCpfProfissional());
+            st.setString(3,at.getDtentrada());
+            st.setInt(4,at.getIdDiagnostico());
+            st.setInt(5,at.getTipo());
             
             st.execute();
             st.close();  
@@ -32,13 +35,16 @@ public class ProfissionalModel {
         Statement st;
         HashSet list = new HashSet();
             st = con.createStatement();
-            String sql = "SELECT cpf, nome, dtnascimento, endereco FROM profissionais";
+            String sql = "SELECT codp, cpfprofissional,dtentrada,idddiagnostico,tipom FROM atendimento";
             ResultSet result = st.executeQuery(sql);
             while(result.next()) {
-                list.add(new Profissional(result.getLong(1), result.getString(2), result.getString(3), result.getString(4)));
+                list.add(new Atendimento(result.getInt(1), result.getLong(2), result.getString(3), result.getInt(4), result.getInt(5)));
             }
         return list;
     }
     
-   
+    
+      
+      
+    
 }

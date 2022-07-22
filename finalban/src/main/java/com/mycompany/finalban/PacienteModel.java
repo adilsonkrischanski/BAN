@@ -42,4 +42,17 @@ public class PacienteModel {
         return list;
     }
     
+     static int maxCodp(Connection con) throws SQLException {
+        Statement st;
+        HashSet list = new HashSet();
+            st = con.createStatement();
+            String sql = "SELECT max(codp) FROM paciente";
+            ResultSet result = st.executeQuery(sql);
+            while(result.next()){
+               return result.getInt(1);
+            }
+            return result.getInt(1);
+    
+    }
+    
 }

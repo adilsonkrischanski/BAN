@@ -37,7 +37,7 @@ public class PacienteController {
         long cpf = input.nextLong();
         input.nextLine();
         
-        int codp = 1;
+        int codp = PacienteModel.maxCodp(con)+1;
         
         System.out.print("Data de Nascimento (DD/MM/AAAA): "); 
         String dataNascimento = input.nextLine();

@@ -13,16 +13,14 @@ import java.util.HashSet;
 
 /**
  *
- * @author adilson
+ * @author krischanski
  */
-public class ProfissionalModel {
-    public static void create(Profissional p, Connection con) throws SQLException {
+public class ProfessorModel {
+     public static void create(Professor p , Connection con) throws SQLException {
         PreparedStatement st;
-            st = con.prepareStatement("INSERT INTO profissionais (cpf, nome, dtnascimento, endereco) VALUES (?,?,?,?)");
+            st = con.prepareStatement("INSERT INTO professores (cpf,crm) VALUES (?,?)");
             st.setLong(1,p.getCpf());
-            st.setString(2,p.getNome());
-            st.setString(3,p.getDtnascimento());
-            st.setString(4,p.getEndereco());
+            st.setString(2,p.getCrm());
             
             st.execute();
             st.close();  
@@ -32,13 +30,12 @@ public class ProfissionalModel {
         Statement st;
         HashSet list = new HashSet();
             st = con.createStatement();
-            String sql = "SELECT cpf, nome, dtnascimento, endereco FROM profissionais";
+            String sql = "SELECT cpf,crm FROM professores";
             ResultSet result = st.executeQuery(sql);
             while(result.next()) {
-                list.add(new Profissional(result.getLong(1), result.getString(2), result.getString(3), result.getString(4)));
+                list.add(new Professor(result.getString(2), result.getLong(1)));
             }
         return list;
     }
     
-   
 }

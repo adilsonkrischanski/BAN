@@ -30,7 +30,21 @@ public class Finalban {
             try {
                 switch (op) {
                     case 1 :new PacienteController().create(con);
+                        break;
                     case 2: new MedicamentoController().create(con);
+                    break;
+                    case 3: new AlunoController().create(con);
+                    break;
+                    case 4: new ProfessorController().create(con);
+                    break;
+                    case 5:new MedicamentoController().listarAll(con);
+                    break;
+                    case 6: new AlergiaController().create(con);
+                    break;
+                    case 7: new AlergiaController().listarAll(con);
+                    break;
+                    
+                   
                            
                 }
             }catch(SQLException ex) {
@@ -38,7 +52,7 @@ public class Finalban {
                 System.out.println(ex.getMessage());
                 continue;
             }
-        } while(op>0 && op<6);  
+        } while(op>0 && op<15);  
         con.close();
     }    
     
