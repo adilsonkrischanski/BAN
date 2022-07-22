@@ -29,7 +29,8 @@ public class Finalban {
             op = menu();
             try {
                 switch (op) {
-                    case 1: new MedicamentoController().create(con);
+                    case 1 :new PacienteController().create(con);
+                    case 2: new MedicamentoController().create(con);
                            
                 }
             }catch(SQLException ex) {

@@ -13,7 +13,7 @@ public class Paciente {
     private String nome = new String();
     private long cpf;
     private String dtnascimento = new String(); 
-    private String endereço = new String();
+    private String endereco = new String();
     private String tipoSanguineo = new String();
 
     public Paciente(int codp,long cpf, String nome, String dtnascimento, String endereco, String tipoSanguineo) {
@@ -21,7 +21,7 @@ public class Paciente {
         this.codp = codp;
         this.cpf = cpf;
         this.dtnascimento = dtnascimento;
-        this.endereço = endereco;
+        this.endereco = endereco;
         this.tipoSanguineo = tipoSanguineo;
                
     }
@@ -60,12 +60,12 @@ public class Paciente {
         this.dtnascimento = dtnascimento;
     }
 
-    public String getEndereço() {
-        return endereço;
+    public String getEndereco() {
+        return endereco;
     }
 
-    public void setEndereço(String endereço) {
-        this.endereço = endereço;
+    public void setEndereço(String endereco) {
+        this.endereco = endereco;
     }
 
     public String getTipoSanguineo() {
@@ -75,8 +75,11 @@ public class Paciente {
     public void setTipoSanguineo(String tipoSanguineo) {
         this.tipoSanguineo = tipoSanguineo;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "Paciente{" + "codp=" + codp + ", nome=" + nome + ", cpf=" + cpf + ", dtnascimento=" + dtnascimento + ", endereco=" + endereco + ", tipoSanguineo=" + tipoSanguineo + '}';
+    }
     
     
     
