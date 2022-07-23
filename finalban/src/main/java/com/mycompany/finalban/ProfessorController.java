@@ -71,5 +71,10 @@ public class ProfessorController {
         }
    
         System.out.println("Professor cadastrado com sucesso!!");
-    }    
+    }  
+    
+    public void acharPaciente(Connection con,String nome) throws SQLException{
+        System.out.println(PacienteModel.AcharPaciente(con, nome));
+    }
+
 }

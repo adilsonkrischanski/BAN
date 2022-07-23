@@ -36,11 +36,10 @@ public class AtendimentoModel {
         Statement st;
         HashSet list = new HashSet();
         st = con.createStatement();
-        String sql = "SELECT codp, cpfprofissional,dtentrada,idddiagnostico,tipo FROM atendimento";
+        String sql = "SELECT codp, cpfprofissional, dtentrada, tipo FROM atendimento";
         ResultSet result = st.executeQuery(sql);
         while (result.next()) {
-            list.add(new Atendimento(result.getInt(1), result.getLong(2), result.getString(3), result.getInt(4),
-                    result.getInt(5)));
+            list.add(new Atendimento(result.getInt(1), result.getLong(2), result.getString(3), result.getInt(4)));
         }
         return list;
     }
@@ -48,7 +47,6 @@ public class AtendimentoModel {
     static void AtendimentosPaciente(Connection con, String nomePaciente) throws SQLException {
         Statement st;
         String tipo;
-        HashSet list = new HashSet();
         st = con.createStatement();
         String sqlbase = "SELECT nome, dtentrada, tipo FROM atendimento JOIN profissionais p ON cpf = cpfprofissional WHERE cpf IN (SELECT cpfprofissional FROM atendimento NATURAL JOIN paciente p WHERE p.nome = ";
         String num = "'".concat(nomePaciente.concat("' )"));
@@ -71,7 +69,6 @@ public class AtendimentoModel {
     static void AtendimentosMedicos(Connection con, String nomeMedico) throws SQLException {
         Statement st;
         String tipo;
-        HashSet list = new HashSet();
         st = con.createStatement();
         String sqlbase = "SELECT nome, dtentrada, tipo FROM atendimento NATURAL JOIN pacientes WHERE codp IN (SELECT codp FROM atendimento JOIN profissionais p ON cpfprofissional = cpf WHERE p.nome = ";
         String num = "'".concat(nomeMedico.concat("' )"));

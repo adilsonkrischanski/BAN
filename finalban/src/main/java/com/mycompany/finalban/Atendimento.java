@@ -15,12 +15,11 @@ public class Atendimento {
     private int tipo;
     private int idDiagnostico;
 
-    public Atendimento(int codp, long cpfProfissional, String dtentrada, int tipo, int idDiagnostico) {
+    public Atendimento(int codp, long cpfProfissional, String dtentrada, int tipo) {
         this.codp = codp;
         this.cpfProfissional = cpfProfissional;
         this.dtentrada = dtentrada;
         this.tipo = tipo;
-        this.idDiagnostico = idDiagnostico;
     }
 
     

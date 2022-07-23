@@ -28,7 +28,6 @@ public class ProfessorModel {
     
     static void listAll(Connection con) throws SQLException {
         Statement st;
-        HashSet list = new HashSet();
             st = con.createStatement();
             String sql = "SELECT nome,cpf,crm FROM professores pf JOIN profissionais p ON p.cpf = pf.cpf";
             ResultSet result = st.executeQuery(sql);
