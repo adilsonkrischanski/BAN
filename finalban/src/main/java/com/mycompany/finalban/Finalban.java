@@ -31,7 +31,7 @@ public class Finalban {
                 switch (op) {
                     case 1:
                         System.out
-                                .println("1 - Paciente\n2 - Aluno\n3 - Professor\n4 - Medicamento\n5 - Especialidade");
+                                .println("1 - Paciente\n2 - Aluno\n3 - Professor\n4 - Medicamento\n5 - Especialidade\n6 - Atendimento");
                         op = sc.nextInt();
                         switch (op) {
                             case 1:
@@ -48,6 +48,9 @@ public class Finalban {
                                 break;
                             case 5:
                                 new EspecialidadeController().create(con);
+                                break;
+                            case 6:
+                                new AtendimentoController().create(con);
                                 break;
                         }
                         break;
@@ -76,10 +79,12 @@ public class Finalban {
                     case 8:
                         System.out.print("Nome Completo do Paciente: ");
                         nome = sc.nextLine().toUpperCase();
+                        new PacienteController().FindPaciente(con, nome); 
                         break;
                     case 9:
                         System.out.print("Nome Completo do Medico: ");
                         nome = sc.nextLine().toUpperCase();
+                        new ProfissionalModel().AcharProfissional(con,nome);
                         break;
                     case 10:
                         System.out.println("1 - Cadastrar Avaliacao\n2 - Listar Avaliacoes");
@@ -138,7 +143,9 @@ public class Finalban {
         System.out.println("14 - Visualizar Plantoes");
         System.out.println();
         Scanner input = new Scanner(System.in);
-        return input.nextInt();
+        int a = input.nextInt();
+        input.nextLine();
+        return a;
     }
 
 }

@@ -11,6 +11,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashSet;
 
+
+
 /**
  *
  * @author adilson
@@ -41,16 +43,16 @@ public class ProfissionalModel {
         return list;
     }
 
-    static Profissional AcharProfissional(Connection con, String nome) throws SQLException {
+    static void AcharProfissional(Connection con, String nome) throws SQLException {
         Statement st;
-        HashSet list = new HashSet();
         st = con.createStatement();
-        String sql = "SELECT cpf, nome, dtnascimento, endereco FROM profissionais WHERE nome=" + nome;
+        String sql = "SELECT cpf, nome, dtnascimento, endereco FROM profissionais WHERE nome='" +nome+"'";
+        System.out.println(sql);
         ResultSet result = st.executeQuery(sql);
         while (result.next()) {
-            return (new Profissional(result.getLong(1), result.getString(2), result.getString(3), result.getString(4)));
+            System.out.println(new Profissional(result.getLong(1), result.getString(2), result.getString(3), result.getString(4)));
         }
-        return (new Profissional(result.getLong(1), result.getString(2), result.getString(3), result.getString(4)));
+        
     }
 
 }

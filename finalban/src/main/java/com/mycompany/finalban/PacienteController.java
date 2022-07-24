@@ -43,10 +43,10 @@ public class PacienteController {
         String dataNascimento = input.nextLine();
         
         System.out.print("Tipo Sanguineo (O+, O-, A+, A-, B+, B-, AB+,AB-): ");
-        String tipoSanguineo = input.nextLine();
+        String tipoSanguineo = input.nextLine().toUpperCase();
         
         System.out.print("Endereco (Rua nº, bairro, cidade): ");
-        String endereco = input.nextLine();
+        String endereco = input.nextLine().toUpperCase();
         
         Paciente pc = new Paciente(codp, cpf, nome, dataNascimento,endereco,tipoSanguineo);
         PacienteModel.create(pc, con);
@@ -75,7 +75,7 @@ public class PacienteController {
         String email  = new String();       
         if(checkemail =='S'){
            System.out.print("Informe o email: ");
-           email = input.nextLine();
+           email = input.nextLine().toUpperCase();
            Email e = new Email(email,codp );
            EmailModel.createPaciente(e, con);
         }
@@ -90,5 +90,9 @@ public class PacienteController {
         while(it.hasNext()) {
             System.out.println(it.next().toString());
         }
+    }
+    void FindPaciente(Connection con, String nome) throws SQLException {
+        Paciente p  = PacienteModel.AcharPaciente(con, nome);
+        System.out.println(p.toString());
     }
 }

@@ -1,6 +1,5 @@
 package com.mycompany.finalban;
 
-package com.mycompany.finalban;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -32,13 +31,13 @@ public class PlantaoModel {
         Statement st;
         HashSet list = new HashSet();
         st = con.createStatement();
-        String sql = "SELECT f.nome, pl.crm, horarioinicio, duracao,diasemana  FROM plantao pl e JOIN professores p on  p.crm=e.crm JOIN profissionais f on p.cpf=f.cpf ";
+        String sql = "SELECT f.nome, pl.crm, horarioinicio, duracao,diasemana  FROM plantao pl JOIN professores p on  p.crm=pl.crm JOIN profissionais f on p.cpf=f.cpf ";
         ResultSet result = st.executeQuery(sql);
         while (result.next()) {
             System.out.println("Plantonista: "
-                    + (result.getString(1) + "\tCRM:" + result.getString(2) + "Hora Inicio\t: "
-                            + result.getString(3) + "\tDuracao: " + result.getInt(4) + "\nDia Semana: "
-                            + result.getString(5)));
+                    + (result.getString(1) + "\nCRM:" + result.getString(2) + "\nHora Inicio: "
+                            + result.getString(3) + "\nDuracao: " + result.getInt(4) + "\nDia Semana: "
+                            + result.getString(5)+"\n------------------------"));
         }
     }
 

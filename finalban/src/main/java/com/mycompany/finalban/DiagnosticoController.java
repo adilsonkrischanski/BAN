@@ -20,11 +20,12 @@ public class DiagnosticoController {
     public void create(Connection con) throws SQLException {
         Scanner input = new Scanner(System.in);
         System.out.print("Enfermidade: ");
-        String nome = input.nextLine();
+        String nome = input.nextLine().toUpperCase();
         System.out.print("Sintomas: ");
-        String sintomas = input.nextLine();
+        String sintomas = input.nextLine().toUpperCase();
         System.out.print("Identificador: ");
         int id = input.nextInt();
+        input.nextLine();
         System.out.println("Dados do atendimento");
         System.out.print("Data: ");
         String data = input.nextLine();
@@ -35,8 +36,8 @@ public class DiagnosticoController {
 
         Diagnostico d = new Diagnostico(id, nome, sintomas);
         DiagnosticoModel.create(d, con);
+        new AtendimentoModel().updateAtendimento(con, cpf, codp, data, d.getIdDiagnostico());
 
-        new AtendimentoController().updateAtendimento(con, cpf, codp, data, id);
     }
 
     void AcharDiagnostico(Connection con, String nomePaciente, String data) throws SQLException {

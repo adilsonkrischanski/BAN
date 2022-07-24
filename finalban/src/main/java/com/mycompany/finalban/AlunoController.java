@@ -31,10 +31,10 @@ public class AlunoController {
         String dataNascimento = input.nextLine();
         
         System.out.print("Endereco (Rua nº, bairro, cidade): ");
-        String endereco = input.nextLine();
+        String endereco = input.nextLine().toUpperCase();
         
-        new Profissional(cpf, nome, dataNascimento, endereco);
-//      ProfissionalModel.create(pf, con);
+        Profissional pf = new Profissional(cpf, nome, dataNascimento, endereco);
+        ProfissionalModel.create(pf, con);
         
         System.out.print("Matricula:");
         long matricula = input.nextLong();
@@ -44,7 +44,7 @@ public class AlunoController {
         String dtinicio= input.nextLine();
          
         System.out.print("Crm Orientador:");
-        String crmOrientador = input.nextLine();
+        String crmOrientador = input.nextLine().toUpperCase();
         
         Aluno an = new Aluno(cpf, matricula ,dtinicio,crmOrientador);
         AlunoModel.create(an, con);
@@ -72,7 +72,7 @@ public class AlunoController {
         String email  = new String();       
         if(checkemail =='S'){
            System.out.print("Informe o email: ");
-           email = input.nextLine();
+           email = input.nextLine().toUpperCase();
            Email e = new Email(email,cpf );
            EmailModel.createProfissionais(e, con);
         }

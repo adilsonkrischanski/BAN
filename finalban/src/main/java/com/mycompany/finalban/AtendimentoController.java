@@ -5,6 +5,8 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.sql.Statement;
+import java.sql.ResultSet;
 
 
 /*
@@ -42,26 +44,6 @@ public class AtendimentoController {
             System.out.println(it.next().toString());
         }
     }
-     
-    static Atendimento acharAtendimento(Connection con, Long cpf , int codp, String data) throws SQLException {
-        Statement st;
-        HashSet list = new HashSet();
-        st = con.createStatement();
-        String sql = "SELECT codp, cpfprofissional, tipo, data FROM atendimento WHERE codp=" + codp + " AND cpfprofissional="+ cpf+ " AND data="+data;
-        ResultSet result = st.executeQuery(sql);
-        while (result.next()) {
-            return (new Atendimento(result.getInt(1), result.getLong(2), result.getInt(3), result.getString(4)));
-        }
-        return (new Atendimento(result.getInt(1), result.getLong(2), result.getInt(3), result.getString(4)));
-    }
-
-    static void updateAtendimento(Connection con, Long cpf , int codp, String data, int id) throws SQLException {
-        Statement st;
-        HashSet list = new HashSet();
-        st = con.createStatement();
-        String sql = "UPDATE atendimento SET iddiagnostico="+ id +" WHERE codp=" + codp + " AND cpfprofissional="+ cpf+ " AND data="+data;
-        ResultSet result = st.executeQuery(sql);
-        System.out.println("Diagnostico gerado com Sucesso!");
-    }
+    
       
 }

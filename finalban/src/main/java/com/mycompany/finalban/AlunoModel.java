@@ -36,6 +36,7 @@ public class AlunoModel {
             ResultSet result = st.executeQuery(sql);
             while(result.next()) {
                 list.add(new Aluno(result.getLong(1), result.getLong(2), result.getString(3), result.getString(4), result.getString(5)));
+//                  System.out.println("Nome: "+result.getString(5)+"\tCPF: "+result.getLong(1)+"\tMatricula"+ result.getLong(2)+"\tData Inicio: "+result.getString(3)+"\tCRM Orientador: "+result.getString(4));
             }
         return list;
     }

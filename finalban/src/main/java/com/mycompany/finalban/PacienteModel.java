@@ -35,10 +35,10 @@ public class PacienteModel {
         Statement st;
         HashSet list = new HashSet();
         st = con.createStatement();
-        String sql = "SELECT cpf,codp, tiposanguineo, nome, dtnascimento,endereco FROM paciente";
+        String sql = "SELECT codp, cpf, tiposanguineo, nome, dtnascimento,endereco FROM paciente";
         ResultSet result = st.executeQuery(sql);
         while (result.next()) {
-            list.add(new Paciente(result.getInt(1), result.getInt(2), result.getString(3), result.getString(4),
+            list.add(new Paciente(result.getInt(1), result.getLong(2), result.getString(3), result.getString(4),
                     result.getString(5), result.getString(6)));
         }
         return list;
@@ -61,15 +61,16 @@ public class PacienteModel {
         Statement st;
         HashSet list = new HashSet();
         st = con.createStatement();
-        String sql = "SELECT cpf,codp, tiposanguineo, nome, dtnascimento,endereco FROM paciente  WHERE nome= " + nome;
+        String sql = "SELECT codp, cpf,nome,dtnascimento,endereco, tiposanguineo FROM paciente  WHERE nome= '" + nome
+                + "'";
         ResultSet result = st.executeQuery(sql);
         while (result.next()) {
 
-            return (new Paciente(result.getInt(1), result.getInt(2), result.getString(3), result.getString(4),
+            return (new Paciente(result.getInt(1), result.getLong(2), result.getString(3), result.getString(4),
                     result.getString(5), result.getString(6)));
         }
-        return (new Paciente(result.getInt(1), result.getInt(2), result.getString(3), result.getString(4),
-                result.getString(5), result.getString(6)));
+        return (new Paciente(result.getInt(1), result.getLong(2), result.getString(3), result.getString(4),
+                    result.getString(5), result.getString(6)));
 
     }
 

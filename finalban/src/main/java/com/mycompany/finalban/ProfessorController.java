@@ -31,8 +31,8 @@ public class ProfessorController {
         System.out.print("Endereco (Rua nº, bairro, cidade): ");
         String endereco = input.nextLine();
         
-        new Profissional(cpf, nome, dataNascimento, endereco);
-//      ProfissionalModel.create(pf, con);
+        Profissional pf = new Profissional(cpf, nome, dataNascimento, endereco);
+        ProfissionalModel.create(pf, con);
         
      
          
@@ -73,8 +73,5 @@ public class ProfessorController {
         System.out.println("Professor cadastrado com sucesso!!");
     }  
     
-    public void acharPaciente(Connection con,String nome) throws SQLException{
-        System.out.println(PacienteModel.AcharPaciente(con, nome));
-    }
 
 }

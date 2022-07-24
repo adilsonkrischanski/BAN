@@ -1,6 +1,5 @@
 package com.mycompany.finalban;
 
-package com.mycompany.finalban;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

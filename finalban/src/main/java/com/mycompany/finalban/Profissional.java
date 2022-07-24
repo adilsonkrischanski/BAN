@@ -28,7 +28,7 @@ public class Profissional {
         this.nome = nome;
         this.dtnascimento = dtnascimento;
         this.endereco = endereco;
-        ProfissionalModel.create(this, con);
+        //ProfissionalModel.create(this, con);
     }
     
     

@@ -21,12 +21,11 @@ public class AtendimentoModel {
     public static void create(Atendimento at, Connection con) throws SQLException {
         PreparedStatement st;
         st = con.prepareStatement(
-                "INSERT INTO atendimento (codp, cpfprofissional,dtentrada,idddiagnostico,tipo) VALUES (?,?,?,?,?)");
+                "INSERT INTO atendimento (codp, cpfprofissional,dtentrada,tipo) VALUES (?,?,?,?)");
         st.setInt(1, at.getCodp());
         st.setLong(2, at.getCpfProfissional());
         st.setString(3, at.getDtentrada());
-        st.setInt(4, at.getIdDiagnostico());
-        st.setInt(5, at.getTipo());
+        st.setInt(4, at.getTipo());
 
         st.execute();
         st.close();
@@ -70,7 +69,7 @@ public class AtendimentoModel {
         Statement st;
         String tipo;
         st = con.createStatement();
-        String sqlbase = "SELECT nome, dtentrada, tipo FROM atendimento NATURAL JOIN pacientes WHERE codp IN (SELECT codp FROM atendimento JOIN profissionais p ON cpfprofissional = cpf WHERE p.nome = ";
+        String sqlbase = "SELECT nome, dtentrada, tipo FROM atendimento NATURAL JOIN paciente WHERE codp IN (SELECT codp FROM atendimento JOIN profissionais p ON cpfprofissional = cpf WHERE p.nome = ";
         String num = "'".concat(nomeMedico.concat("' )"));
         String sql = sqlbase + num;
         System.out.println(sql);
@@ -86,6 +85,35 @@ public class AtendimentoModel {
                     + "\tAtendimento " + tipo);
         }
 
+    }
+
+    public static void CadastrarDiagnostico(Diagnostico d, Atendimento at, Connection con) throws SQLException {
+        Statement st;
+        st = con.createStatement();
+        String sql = "UPDATE atendimento SET iddiagnostico = "+d.getIdDiagnostico()+" WHERE data="+at.getDtentrada()+" AND cpfprofissional="+at.getCpfProfissional()+" AND codp="+at.getCodp();
+        System.out.println(sql);
+        st.executeQuery(sql);
+    }
+
+    static Atendimento acharAtendimento(Connection con, Long cpf , int codp, String data) throws SQLException {
+        Statement st;
+        HashSet list = new HashSet();
+        st = con.createStatement();
+        String sql = "SELECT codp, cpfprofissional, tipo, data FROM atendimento WHERE codp=" + codp + " AND cpfprofissional="+ cpf+ " AND data="+data;
+        ResultSet result = st.executeQuery(sql);
+        while (result.next()) {
+            return (new Atendimento(result.getInt(1), result.getLong(2), result.getString(3), result.getInt(4)));
+        }
+        return (new Atendimento(result.getInt(1), result.getLong(2), result.getString(3), result.getInt(4)));
+    }
+
+    static void updateAtendimento(Connection con, Long cpf , int codp, String data, int id) throws SQLException {
+        Statement st;
+        HashSet list = new HashSet();
+        st = con.createStatement();
+        String sql = "UPDATE atendimento SET iddiagnostico="+ id +" WHERE codp=" + codp + " AND cpfprofissional="+ cpf+ " AND dtentrada='"+data+"'";
+        ResultSet result = st.executeQuery(sql);
+        System.out.println("Diagnostico gerado com Sucesso!");
     }
 
 }
