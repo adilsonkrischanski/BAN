@@ -64,4 +64,23 @@ public class EmailModel {
         return list;
     }
     
+    
+    static void EmailPacientePrint(Connection con,String codp)throws SQLException{
+            Statement st;
+            st = con.createStatement();
+            String sql = "SELECT email, codp FROM email WHERE codp= "+codp;
+            ResultSet result = st.executeQuery(sql);
+            while(result.next()) {
+                System.out.println(result.getString(1));
+            }
+    }
+    static void EmailProfissionalPrint(Connection con, String cpf)throws SQLException{
+            Statement st;
+            st = con.createStatement();
+            String sql = "SELECT email, cpf FROM email WHERE cpf= "+cpf;
+            ResultSet result = st.executeQuery(sql);
+            while(result.next()) {
+                System.out.println(result.getString(1));
+            }
+    }
 }

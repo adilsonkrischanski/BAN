@@ -33,14 +33,13 @@ public class AlergiaModel {
             String sqlbase = "SELECT idmedicamento,nomemedicamento FROM alergia NATURAL JOIN medicamentos WHERE codp=";
             String num = codp;
             String sql = sqlbase+num;
-            System.out.println(sql);
             ResultSet result = st.executeQuery(sql);
             while(result.next()) {
                 System.out.println(Integer.toString(result.getInt(1))+' '+result.getString(2));
             }
- 
-       
+
      
     }
+    
     
 }

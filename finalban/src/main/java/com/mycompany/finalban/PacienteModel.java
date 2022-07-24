@@ -31,17 +31,27 @@ public class PacienteModel {
         st.close();
     }
 
-    static HashSet listAll(Connection con) throws SQLException {
+    static void listAll(Connection con) throws SQLException {
         Statement st;
         HashSet list = new HashSet();
         st = con.createStatement();
-        String sql = "SELECT codp, cpf, tiposanguineo, nome, dtnascimento,endereco FROM paciente";
+        String sql = "SELECT codp, cpf,nome,dtnascimento, endereco, tiposanguineo FROM paciente";
         ResultSet result = st.executeQuery(sql);
         while (result.next()) {
-            list.add(new Paciente(result.getInt(1), result.getLong(2), result.getString(3), result.getString(4),
+//            list.add(new Paciente(result.getInt(1), result.getLong(2), result.getString(3), result.getString(4),
+//                    result.getString(5), result.getString(6)));
+            System.out.println(new Paciente(result.getInt(1), result.getLong(2), result.getString(3), result.getString(4),
                     result.getString(5), result.getString(6)));
+            System.out.println("Email(s):");
+            EmailModel.EmailPacientePrint(con,Integer.toString(result.getInt(1))); 
+            System.out.println("Telefones(s):");
+            TelefoneModel.TelefonePacientePrint(con,Integer.toString(result.getInt(1)));
+            System.out.println("Alergia(s):");
+            AlergiaModel.listAll(con,Integer.toString(result.getInt(1)));
         }
-        return list;
+        System.out.println("-------------------");
+        
+        
     }
 
     static int maxCodp(Connection con) throws SQLException {

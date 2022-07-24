@@ -40,14 +40,14 @@ public class AvaliacaoModel {
 
     static void AvaliacoesAlunos(Connection con) throws SQLException {
         Statement st;
-        HashSet list = new HashSet();
         st = con.createStatement();
         String sql = "SELECT p.nome, nomeavaliador, nota, comentario FROM avaliacoes NATURAL JOIN alunos a LEFT JOIN profissionais p on a.cpf=p.cpf ";
         ResultSet result = st.executeQuery(sql);
         while (result.next()) {
-            System.out.println("Aluno: " + result.getString(1) + " Nota: " + result.getDouble(3) + " Avaliador: "
-                    + result.getString(2) + " Comentario: " + result.getString(4));
+            System.out.println("------------------\nAluno: " + result.getString(1) + " \nNota: " + result.getDouble(3) + " \nAvaliador: "
+                    + result.getString(2) + " \nComentario: " + result.getString(4));
         }
+        System.out.println("-------------------");
 
     }
 
@@ -62,6 +62,33 @@ public class AvaliacaoModel {
         }
         return result.getInt(1);
 
+    }
+    
+    static void AvaliacoesMaiorNota(Connection con) throws SQLException {
+        Statement st;
+        st = con.createStatement();
+        String sql = "SELECT p.nome, nomeavaliador, nota, comentario FROM avaliacoes NATURAL JOIN alunos a LEFT JOIN profissionais p on a.cpf=p.cpf Where nota in ("
+                + "SELECT MAX(nota) FROM avaliacoes)";
+        ResultSet result = st.executeQuery(sql);
+        while (result.next()) {
+            System.out.println("------------------\nAluno: " + result.getString(1) + " \nNota: " + result.getDouble(3) + " \nAvaliador: "
+                    + result.getString(2) + " \nComentario: " + result.getString(4));
+        }
+        System.out.println("-------------------");
+    
+    }
+    static void AvaliacoesMenorNota(Connection con) throws SQLException {
+        Statement st;
+        st = con.createStatement();
+        String sql = "SELECT p.nome, nomeavaliador, nota, comentario FROM avaliacoes NATURAL JOIN alunos a LEFT JOIN profissionais p on a.cpf=p.cpf Where nota in ("
+                + "SELECT MIN(nota) FROM avaliacoes)";
+        ResultSet result = st.executeQuery(sql);
+        while (result.next()) {
+            System.out.println("------------------\nAluno: " + result.getString(1) + " \nNota: " + result.getDouble(3) + " \nAvaliador: "
+                    + result.getString(2) + " \nComentario: " + result.getString(4));
+        }
+        System.out.println("-------------------");
+    
     }
 
 }

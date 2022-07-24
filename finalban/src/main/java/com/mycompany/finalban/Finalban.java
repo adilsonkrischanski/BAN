@@ -87,7 +87,7 @@ public class Finalban {
                         new ProfissionalModel().AcharProfissional(con,nome);
                         break;
                     case 10:
-                        System.out.println("1 - Cadastrar Avaliacao\n2 - Listar Avaliacoes");
+                        System.out.println("1 - Cadastrar Avaliacao\n2 - Listar Avaliacoes\n3 - Aluno(s) Maior nota\n4 - Aluno(s) Menor nota\n");
                         op = sc.nextInt();
                         switch (op) {
                             case 1:
@@ -96,6 +96,12 @@ public class Finalban {
 
                             case 2:
                                 new AvaliacaoController().ListAlunosNotas(con);
+                                break;
+                            case 3:
+                                new AvaliacaoModel().AvaliacoesMaiorNota(con) ;
+                                break;
+                            case 4:
+                                new AvaliacaoModel().AvaliacoesMenorNota(con);
                                 break;
                         }
                         break;

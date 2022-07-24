@@ -55,13 +55,19 @@ public class EspecialidadeModel {
         Statement st;
         HashSet list = new HashSet();
         st = con.createStatement();
-        String sql = "SELECT f.nome, p.crm, nomeespecialidade FROM especialidade e JOIN professores p on  p.crm=e.crm JOIN profissionais f on p.cpf=f.cpf ";
+        String sql = "SELECT f.nome, p.crm, nomeespecialidade, f.cpf FROM especialidade e JOIN professores p on  p.crm=e.crm JOIN profissionais f on p.cpf=f.cpf ";
         ResultSet result = st.executeQuery(sql);
         while (result.next()) {
             System.out.println("Professor: "
                     + (result.getString(1) + "\tCRM:" + result.getString(2) + "\tEspecialidade: "
                             + result.getString(3)));
+                System.out.println("Email(s):");
+                EmailModel.EmailProfissionalPrint(con,Long.toString(result.getLong(4))); 
+                System.out.println("Telefones(s):");
+                TelefoneModel.TelefoneProfissionalPrint(con,Long.toString(result.getLong(4)));
+                
+                 }
+            System.out.println("-------------------");
         }
-    }
 
 }

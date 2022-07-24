@@ -57,4 +57,24 @@ public class TelefoneModel {
         return list;
     }
     
+    static void TelefonePacientePrint(Connection con,String codp)throws SQLException{
+            Statement st;
+            st = con.createStatement();
+            String sql = "SELECT telefone, codp FROM telefone WHERE codp= +"+codp;
+            ResultSet result = st.executeQuery(sql);
+            while(result.next()) {
+                System.out.println(result.getString(1));
+            }
+    }
+    
+    static void TelefoneProfissionalPrint(Connection con,String cpf)throws SQLException{
+            Statement st;
+            st = con.createStatement();
+            String sql = "SELECT telefone, cpf FROM telefone WHERE cpf= +"+cpf;
+            ResultSet result = st.executeQuery(sql);
+            while(result.next()) {
+                System.out.println(result.getString(1));
+            }
+    }
+    
 }

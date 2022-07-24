@@ -28,16 +28,24 @@ public class AlunoModel {
             st.close();  
     }
     
-    static HashSet listAll(Connection con) throws SQLException {
+    static void listAll(Connection con) throws SQLException {
         Statement st;
         HashSet list = new HashSet();
             st = con.createStatement();
             String sql = "SELECT cpf, matricula, datainicio, crmorientador, nome FROM alunos NATURAL JOIN profissionais order by nome";
             ResultSet result = st.executeQuery(sql);
             while(result.next()) {
-                list.add(new Aluno(result.getLong(1), result.getLong(2), result.getString(3), result.getString(4), result.getString(5)));
-//                  System.out.println("Nome: "+result.getString(5)+"\tCPF: "+result.getLong(1)+"\tMatricula"+ result.getLong(2)+"\tData Inicio: "+result.getString(3)+"\tCRM Orientador: "+result.getString(4));
+//                list.add(new Aluno(result.getLong(1), result.getLong(2), result.getString(3), result.getString(4), result.getString(5)));
+                
+                System.out.println("------------------\nNome: "+result.getString(5)+"\nCPF: "+result.getLong(1)+"\nMatricula: "+ result.getLong(2)+"\nData Inicio: "+result.getString(3)+"\nNome Orientador: "+ProfessorModel.NomeCRM(con, result.getString(4))+"\nCRM Orientador: "+result.getString(4));
+                EmailModel.EmailProfissionalPrint(con,Long.toString(result.getLong(2))); 
+                System.out.println("Telefones(s):");
+                TelefoneModel.TelefoneProfissionalPrint(con,Long.toString(result.getLong(1)));
+                
+                 }
+                System.out.println("-------------------");
             }
-        return list;
-    }
+    
+
+    
 }

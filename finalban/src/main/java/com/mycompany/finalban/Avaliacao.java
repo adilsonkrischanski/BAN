@@ -19,7 +19,7 @@ public class Avaliacao {
 
     @Override
     public String toString() {
-        return "ID Avaliacao: " + idAvalidacao + "\tNome do Avaliador: " + nomeAvalidor + "\tNota: " + nota + "\tComentario: " + Comentario + "\tData da Prova: " + dataAvaliacao + "\tMatricula do Aluno: " + Matricula;
+        return "------------------\nID Avaliacao: " + idAvalidacao + "\nNome do Avaliador: " + nomeAvalidor + "\nNota: " + nota + "\nComentario: " + Comentario + "\nData da Prova: " + dataAvaliacao + "\nMatricula do Aluno: " + Matricula;
     }
 
     public int getIdAvalidacao() {

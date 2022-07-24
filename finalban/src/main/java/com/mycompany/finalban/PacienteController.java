@@ -85,11 +85,12 @@ public class PacienteController {
     }
 
     void listarPaciente(Connection con) throws SQLException {
-        HashSet all = PacienteModel.listAll(con);
-        Iterator<Paciente> it = all.iterator();
-        while(it.hasNext()) {
-            System.out.println(it.next().toString());
-        }
+        PacienteModel.listAll(con);
+//        HashSet all = PacienteModel.listAll(con);
+//        Iterator<Paciente> it = all.iterator();
+//        while(it.hasNext()) {
+//            System.out.println(it.next().toString());
+//        }
     }
     void FindPaciente(Connection con, String nome) throws SQLException {
         Paciente p  = PacienteModel.AcharPaciente(con, nome);

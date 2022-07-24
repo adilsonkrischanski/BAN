@@ -33,7 +33,23 @@ public class ProfessorModel {
             ResultSet result = st.executeQuery(sql);
             while(result.next()) {
                 System.out.println("nome: "+result.getString(1)+"\tcpf: "+ Long.toString(result.getLong(2))+""+result.getString(3));
+                EmailModel.EmailProfissionalPrint(con,Long.toString(result.getLong(2))); 
+                System.out.println("Telefones(s):");
+                TelefoneModel.TelefoneProfissionalPrint(con,Long.toString(result.getLong(1)));
+                
+                 }
+        System.out.println("-------------------");
+        }
+    
+        static String NomeCRM(Connection con,String crm) throws SQLException {
+        Statement st;
+        st = con.createStatement();
+        String sql2 = "SELECT pr.nome FROM profissionais pr JOIN professores prof on pr.cpf=prof.cpf WHERE prof.crm='"+crm+"'";
+        ResultSet result2 = st.executeQuery(sql2);
+        while(result2.next()){
+            return result2.getString(1);
             }
+        return result2.getString(1);
     }
     
 }

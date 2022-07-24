@@ -31,6 +31,7 @@ public class EspecialidadeController {
         Iterator<Especialidade> it = all.iterator();
         while (it.hasNext()) {
             System.out.println(it.next().toString());
+            
         }
     }
     

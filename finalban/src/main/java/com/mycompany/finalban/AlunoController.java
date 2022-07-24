@@ -83,10 +83,7 @@ public class AlunoController {
     }
 
     void listarAlunos(Connection con) throws SQLException {
-        HashSet all = AlunoModel.listAll(con);
-        Iterator<Aluno> it = all.iterator();
-        while(it.hasNext()) {
-            System.out.println(it.next().toString());
-        }
+        AlunoModel.listAll(con);
+        
     }
 }
