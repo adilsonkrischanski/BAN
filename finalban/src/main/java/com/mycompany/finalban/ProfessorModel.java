@@ -32,13 +32,14 @@ public class ProfessorModel {
             String sql = "SELECT nome,cpf,crm FROM professores pf JOIN profissionais p ON p.cpf = pf.cpf";
             ResultSet result = st.executeQuery(sql);
             while(result.next()) {
-                System.out.println("nome: "+result.getString(1)+"\tcpf: "+ Long.toString(result.getLong(2))+""+result.getString(3));
+                System.out.println("nome: "+result.getString(1)+"\nCPF: "+ Long.toString(result.getLong(2))+"\nEspecialidade: "+result.getString(3));
                 EmailModel.EmailProfissionalPrint(con,Long.toString(result.getLong(2))); 
                 System.out.println("Telefones(s):");
                 TelefoneModel.TelefoneProfissionalPrint(con,Long.toString(result.getLong(1)));
+                System.out.println("-------------------");
                 
                  }
-        System.out.println("-------------------");
+        
         }
     
         static String NomeCRM(Connection con,String crm) throws SQLException {

@@ -41,11 +41,7 @@ public class DiagnosticoController {
     }
 
     void AcharDiagnostico(Connection con, String nomePaciente, String data) throws SQLException {
-        HashSet all = TelefoneModel.listAllPacientes(con);
-        Iterator<Telefone> it = all.iterator();
-        while(it.hasNext()) {
-            System.out.println(it.next().toString());
-        }
+        DiagnosticoModel.AcharDiagnostico(con, nomePaciente, data); 
     }
     
 }

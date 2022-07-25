@@ -50,7 +50,6 @@ public class AtendimentoModel {
         String sqlbase = "SELECT nome, dtentrada, tipo FROM atendimento JOIN profissionais p ON cpf = cpfprofissional WHERE cpf IN (SELECT cpfprofissional FROM atendimento NATURAL JOIN paciente p WHERE p.nome = ";
         String num = "'".concat(nomePaciente.concat("' )"));
         String sql = sqlbase + num;
-        System.out.println(sql);
         ResultSet result = st.executeQuery(sql);
         System.out.println();
         while (result.next()) {
@@ -99,7 +98,7 @@ public class AtendimentoModel {
         Statement st;
         HashSet list = new HashSet();
         st = con.createStatement();
-        String sql = "SELECT codp, cpfprofissional, tipo, data FROM atendimento WHERE codp=" + codp + " AND cpfprofissional="+ cpf+ " AND data="+data;
+        String sql = "SELECT codp, cpfprofissional, tipo, data FROM atendimento WHERE codp=" + codp + " AND cpfprofissional="+ cpf+ " AND dtentrada='"+data+"'";
         ResultSet result = st.executeQuery(sql);
         while (result.next()) {
             return (new Atendimento(result.getInt(1), result.getLong(2), result.getString(3), result.getInt(4)));

@@ -39,16 +39,15 @@ public class DiagnosticoModel {
         return list;
     }
 
-    void AcharDiagnostico(Connection con, String nomePaciente, String data) throws SQLException {
+    static void AcharDiagnostico(Connection con, String nomePaciente, String data) throws SQLException {
         Statement st;
         String tipo;
         st = con.createStatement();
-        String sql = "SELECT iddiagnostico, nomedoenca, sintomas FROM diagnostico WHERE iddiagnostico IN (SELECT iddiagnostico FROM atendimento NATURAL JOIN paciente WHERE data="+data+" AND nome="+nomePaciente;
-        System.out.println(sql);
+        String sql = "SELECT iddiagnostico, nomedoenca, sintomas FROM diagnostico WHERE iddiagnostico IN (SELECT iddiagnostico FROM atendimento NATURAL JOIN paciente WHERE dtentrada='"+data+"' AND nome='"+nomePaciente+"')";
         ResultSet result = st.executeQuery(sql);
         System.out.println();
         while (result.next()) {
-            System.out.println("Diagnostico: " + result.getString(2) + "\tSintomas: " + result.getString(3));
+            System.out.println("Diagnostico: " + result.getString(2) + "\nSintomas: " + result.getString(3)+"\n---------------------");
         }
     }
     

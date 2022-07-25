@@ -31,7 +31,7 @@ public class Finalban {
                 switch (op) {
                     case 1:
                         System.out
-                                .println("1 - Paciente\n2 - Aluno\n3 - Professor\n4 - Medicamento\n5 - Especialidade\n6 - Atendimento");
+                                .println("1 - Paciente\n2 - Aluno\n3 - Professor\n4 - Medicamento\n5 - Especialidade\n6 - Atendimento\n7 - Alergia");
                         op = sc.nextInt();
                         switch (op) {
                             case 1:
@@ -51,6 +51,9 @@ public class Finalban {
                                 break;
                             case 6:
                                 new AtendimentoController().create(con);
+                                break;
+                            case 7:
+                                new AlergiaController().create(con);
                                 break;
                         }
                         break;
@@ -128,7 +131,7 @@ public class Finalban {
                 System.out.println(ex.getMessage());
                 continue;
             }
-        } while (op > 0 && op < 15);
+        } while (op > -1 && op < 15);
         con.close();
     }
 

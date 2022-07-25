@@ -18,14 +18,12 @@ public class MedicamentoController {
     
     public void create(Connection con) throws SQLException {
       Scanner input = new Scanner(System.in);
-      System.out.println("Insira o Codigo do Novo Medicamento");
-      int idmedicamento = MedicamentoModel.maxCodp(con)+1;
+      int idmedicamento = MedicamentoModel.maxCod(con)+1;
       
       System.out.println("Insira o Nome do Novo Medicamento");
-      input.nextLine();
-      String nome = input.nextLine();
+      String nome = input.nextLine().toUpperCase();
       System.out.println("Insira o fornecedor do Novo Medicamento");
-      String fornecedor = input.nextLine();
+      String fornecedor = input.nextLine().toUpperCase();
       
       System.out.println("Insira a dosagem ");
       double dosagem = input.nextDouble();

@@ -19,7 +19,7 @@ public class EspecialidadeController {
     System.out.println("Insira o CRM do medico");
     String crm = input.nextLine();
     System.out.println("Insira o Nome Da Especialidade");
-    String especialidade = input.nextLine();
+    String especialidade = input.nextLine().toUpperCase();
 
     int idEspecialidade = EspecialidadeModel.maxCod(con)+1;
     Especialidade e = new Especialidade(crm, idEspecialidade, especialidade);

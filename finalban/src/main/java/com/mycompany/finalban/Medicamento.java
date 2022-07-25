@@ -56,7 +56,7 @@ public class Medicamento {
 
     @Override
     public String toString() {
-        return "Medicamento: "+ nomeMedicamento + "\tID: " + idmedicamento + "\tFornecedor: " + fornecedor + "\tDosagem=" + dosagem + " mg";
+        return "Medicamento: "+ nomeMedicamento + "\nID: " + idmedicamento + "\nFornecedor: " + fornecedor + "\nDosagem=" + dosagem + " mg\n-------------------------------";
     }
     
     
